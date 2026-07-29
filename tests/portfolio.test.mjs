@@ -12,11 +12,17 @@ import {
 test("profile uses a truthful junior positioning", () => {
   assert.equal(profile.name, "서정현");
   assert.match(profile.role, /Junior AI Agent Developer/);
-  assert.match(profile.positioning, /신뢰할 수 있는 AI 시스템/);
+  assert.match(profile.positioning, /AI 에이전트 개발을 배우며/);
   assert.doesNotMatch(
     `${profile.role} ${profile.positioning}`,
     /expert|production-ready|전문가/i,
   );
+});
+
+test("profile describes an honest growth story and multimodal vision", () => {
+  assert.match(profile.positioning, /AI 에이전트 개발을 배우며/);
+  assert.match(profile.statement, /왜 이 방법을 선택했고/);
+  assert.match(profile.vision, /사람이 통제권/);
 });
 
 test("projects distinguish built, building, and exploring work", () => {
@@ -45,8 +51,23 @@ test("page provides recruiter-focused navigation and sections", async () => {
     assert.match(html, new RegExp(`id="${id}"`));
   }
 
-  assert.match(html, /대표 프로젝트/);
+  assert.match(html, /배우고, 만들고, 검증한 기록/);
   assert.match(html, /Built · Building · Exploring/);
+});
+
+test("page uses the approved growth narrative", async () => {
+  const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
+
+  for (const message of [
+    "배우기 위해 만들고",
+    "신뢰를 얻기 위해 검증합니다",
+    "배움을 결과물로 바꾸는 과정",
+    "배우고, 만들고, 검증한 기록",
+    "AI 에이전트 개발자로 가는 여정",
+    "계속 검증하며 성장하는 개발자",
+  ]) {
+    assert.match(html, new RegExp(message));
+  }
 });
 
 test("README documents evidence, local verification, and deployment", async () => {
