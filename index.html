@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="신뢰할 수 있는 AI 시스템을 배우고 음성·멀티모달 경험으로 확장하는 주니어 AI 에이전트 개발자 서정현의 포트폴리오"
+      content="배우기 위해 만들고 신뢰를 얻기 위해 검증하는 주니어 AI 에이전트 개발자 서정현의 성장 포트폴리오"
     />
     <meta name="theme-color" content="#071311" />
     <title>서정현 | Junior AI Agent Developer</title>
@@ -33,13 +33,14 @@
         <div class="hero__content">
           <p class="eyebrow">Junior AI Agent Developer · Seoul, Korea</p>
           <h1>
-            AI가 <em>언제 실패하는지</em><br />
-            설명할 수 있는 시스템을 만듭니다.
+            <em>배우기 위해 만들고,</em><br />
+            신뢰를 얻기 위해 검증합니다.
           </h1>
           <p class="hero__lead" id="profile-positioning"></p>
           <p class="hero__statement" id="profile-statement"></p>
+          <p class="hero__vision" id="profile-vision"></p>
           <div class="hero__actions">
-            <a class="button button--primary" href="#projects">대표 프로젝트 보기</a>
+            <a class="button button--primary" href="#projects">만든 기록 보기</a>
             <a
               class="button button--secondary"
               href="https://github.com/SJeongHyeon"
@@ -78,8 +79,8 @@
 
       <section class="section section--evidence" id="evidence">
         <div class="section-heading">
-          <p class="eyebrow">Why this portfolio exists</p>
-          <h2>기술 목록보다 판단의 근거를 보여줍니다.</h2>
+          <p class="eyebrow">배움을 결과물로 바꾸는 과정</p>
+          <h2>기술 목록보다 선택과 검증의 이야기를 보여줍니다.</h2>
           <p>
             완성된 결과와 현재 만드는 것, 앞으로 탐구할 것을 분리해 과장 없이
             성장 방향을 보여줍니다.
@@ -108,7 +109,7 @@
         <div class="section-heading section-heading--row">
           <div>
             <p class="eyebrow">Selected work</p>
-            <h2>대표 프로젝트</h2>
+            <h2>배우고, 만들고, 검증한 기록</h2>
           </div>
           <p class="status-legend">Built · Building · Exploring</p>
         </div>
@@ -117,8 +118,8 @@
 
       <section class="section section--growth" id="growth">
         <div class="section-heading">
-          <p class="eyebrow">Growth map</p>
-          <h2>모델 구현에서 신뢰할 수 있는 멀티모달 에이전트까지</h2>
+          <p class="eyebrow">AI 에이전트 개발자로 가는 여정</p>
+          <h2>모델의 실패를 이해하는 것에서 사람 중심의 에이전트까지</h2>
         </div>
         <ol class="growth-path">
           <li>
@@ -142,7 +143,7 @@
       <section class="contact" id="contact">
         <div>
           <p class="eyebrow">Let’s connect</p>
-          <h2>완벽함보다 검증 가능한 성장을 보여드리겠습니다.</h2>
+          <h2>완벽한 개발자보다, 계속 검증하며 성장하는 개발자가 되겠습니다.</h2>
         </div>
         <a
           class="button button--light"
@@ -154,6 +155,73 @@
         </a>
       </section>
     </main>
+
+    <button
+      class="docent-launcher"
+      id="docent-launcher"
+      type="button"
+      aria-expanded="false"
+      aria-controls="docent-panel"
+    >
+      <span class="docent-launcher__signal" aria-hidden="true">AI</span>
+      <span>
+        <strong>AI 도슨트</strong>
+        <small>질문하기</small>
+      </span>
+    </button>
+
+    <section
+      class="docent-panel"
+      id="docent-panel"
+      role="dialog"
+      aria-labelledby="docent-title"
+      aria-describedby="docent-disclosure"
+      hidden
+    >
+      <header class="docent-panel__header">
+        <div>
+          <p class="eyebrow">Portfolio guide</p>
+          <h2 id="docent-title">AI 도슨트</h2>
+        </div>
+        <div class="docent-panel__tools">
+          <button id="docent-reset" type="button">대화 초기화</button>
+          <button id="docent-close" type="button" aria-label="AI 도슨트 닫기">×</button>
+        </div>
+      </header>
+
+      <div
+        class="docent-messages"
+        id="docent-messages"
+        aria-live="polite"
+        aria-relevant="additions"
+      ></div>
+
+      <div
+        class="docent-suggestions"
+        id="docent-suggestions"
+        aria-label="추천 질문"
+      ></div>
+
+      <form class="docent-form" id="docent-form">
+        <label class="visually-hidden" for="docent-input">
+          포트폴리오에 관해 질문하기
+        </label>
+        <input
+          id="docent-input"
+          name="question"
+          type="text"
+          maxlength="240"
+          autocomplete="off"
+          placeholder="프로젝트, 실패, 학습 또는 비전을 물어보세요"
+        />
+        <button type="submit">보내기</button>
+      </form>
+      <p class="docent-validation" id="docent-validation" aria-live="polite"></p>
+      <p class="docent-disclosure" id="docent-disclosure">
+        실제 생성형 AI가 아닌 포트폴리오 안내 도슨트이며, 사전에 검증된 답변만
+        제공합니다.
+      </p>
+    </section>
 
     <footer>
       <p>© <span id="current-year"></span> 서정현</p>
