@@ -1,3 +1,4 @@
+import { initDocent } from "./docent.js";
 import { profile, projects, renderProjectCard } from "./portfolio.js";
 
 const positioning = document.querySelector("#profile-positioning");
@@ -24,4 +25,10 @@ if (projectGrid) {
 
 if (currentYear) {
   currentYear.textContent = String(new Date().getFullYear());
+}
+
+try {
+  initDocent(document);
+} catch (error) {
+  console.error("AI docent initialization failed.", error);
 }

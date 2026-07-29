@@ -156,6 +156,73 @@
       </section>
     </main>
 
+    <button
+      class="docent-launcher"
+      id="docent-launcher"
+      type="button"
+      aria-expanded="false"
+      aria-controls="docent-panel"
+    >
+      <span class="docent-launcher__signal" aria-hidden="true">AI</span>
+      <span>
+        <strong>AI 도슨트</strong>
+        <small>질문하기</small>
+      </span>
+    </button>
+
+    <section
+      class="docent-panel"
+      id="docent-panel"
+      role="dialog"
+      aria-labelledby="docent-title"
+      aria-describedby="docent-disclosure"
+      hidden
+    >
+      <header class="docent-panel__header">
+        <div>
+          <p class="eyebrow">Portfolio guide</p>
+          <h2 id="docent-title">AI 도슨트</h2>
+        </div>
+        <div class="docent-panel__tools">
+          <button id="docent-reset" type="button">대화 초기화</button>
+          <button id="docent-close" type="button" aria-label="AI 도슨트 닫기">×</button>
+        </div>
+      </header>
+
+      <div
+        class="docent-messages"
+        id="docent-messages"
+        aria-live="polite"
+        aria-relevant="additions"
+      ></div>
+
+      <div
+        class="docent-suggestions"
+        id="docent-suggestions"
+        aria-label="추천 질문"
+      ></div>
+
+      <form class="docent-form" id="docent-form">
+        <label class="visually-hidden" for="docent-input">
+          포트폴리오에 관해 질문하기
+        </label>
+        <input
+          id="docent-input"
+          name="question"
+          type="text"
+          maxlength="240"
+          autocomplete="off"
+          placeholder="프로젝트, 실패, 학습 또는 비전을 물어보세요"
+        />
+        <button type="submit">보내기</button>
+      </form>
+      <p class="docent-validation" id="docent-validation" aria-live="polite"></p>
+      <p class="docent-disclosure" id="docent-disclosure">
+        실제 생성형 AI가 아닌 포트폴리오 안내 도슨트이며, 사전에 검증된 답변만
+        제공합니다.
+      </p>
+    </section>
+
     <footer>
       <p>© <span id="current-year"></span> 서정현</p>
       <p>Built with semantic HTML, CSS and testable JavaScript.</p>
