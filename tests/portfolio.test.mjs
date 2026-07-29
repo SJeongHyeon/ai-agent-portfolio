@@ -61,4 +61,9 @@ test("README documents evidence, local verification, and deployment", async () =
   ]) {
     assert.match(readme, new RegExp(heading));
   }
+
+  assert.match(
+    readme,
+    /https:\/\/ai-agent-portfolio-theta\.vercel\.app/,
+  );
 });
