@@ -88,3 +88,15 @@ test("README documents evidence, local verification, and deployment", async () =
     /https:\/\/ai-agent-portfolio-theta\.vercel\.app/,
   );
 });
+
+test("README documents the docent privacy and deployment boundary", async () => {
+  const readme = await readFile(
+    new URL("../README.md", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(readme, /키워드 기반 AI 도슨트/);
+  assert.match(readme, /외부 AI API를 사용하지 않습니다/);
+  assert.match(readme, /대화 내용을 저장하거나 전송하지 않습니다/);
+  assert.match(readme, /reliable-ai-engineer-portfolio/);
+});
