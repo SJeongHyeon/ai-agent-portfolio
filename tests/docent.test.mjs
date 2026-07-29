@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 import { docentContent } from "../src/docent-data.js";
@@ -61,4 +62,37 @@ test("rejects empty and overlong questions", () => {
   });
   assert.equal(validateQuestion("가".repeat(241)).reason, "too-long");
   assert.equal(validateQuestion("현재 무엇을 배우나요?").valid, true);
+});
+
+test("page exposes the accessible docent controls", async () => {
+  const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
+
+  for (const id of [
+    "docent-launcher",
+    "docent-panel",
+    "docent-messages",
+    "docent-form",
+    "docent-input",
+    "docent-reset",
+  ]) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+
+  assert.match(html, /aria-live="polite"/);
+  assert.match(html, /실제 생성형 AI가 아닌/);
+});
+
+test("prepared answers and links contain no executable markup", () => {
+  const result = selectDocentResponse(
+    "<img src=x onerror=alert(1)> 프로젝트를 보여주세요",
+  );
+
+  assert.equal(result.topic, "projects");
+  assert.doesNotMatch(result.answer, /<script|onerror=/i);
+  assert.equal(
+    result.links.every(({ url }) =>
+      url.startsWith("https://github.com/SJeongHyeon/"),
+    ),
+    true,
+  );
 });
