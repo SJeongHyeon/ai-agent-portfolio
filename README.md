@@ -1,6 +1,6 @@
 # 서정현 — AI Agent Portfolio
 
-신뢰할 수 있는 AI 시스템을 배우고 음성·멀티모달 경험으로 확장하는 주니어 AI 에이전트 개발자 포트폴리오입니다.
+배우기 위해 만들고 신뢰를 얻기 위해 검증하는 주니어 AI 에이전트 개발자 포트폴리오입니다.
 
 [공개 포트폴리오 보기](https://ai-agent-portfolio-theta.vercel.app)
 
@@ -24,6 +24,17 @@
 
 현재 구현 중인 Reliable Tool-Calling Agent와 탐구 중인 Voice & Multimodal Agent는 완성된 프로젝트로 주장하지 않습니다. 코드와 평가 결과가 준비되면 별도 저장소로 공개합니다.
 
+## 키워드 기반 AI 도슨트
+
+방문자는 추천 질문을 누르거나 직접 질문해 프로젝트, 실패 경험, 현재 학습,
+개발 철학과 미래 비전을 살펴볼 수 있습니다. 도슨트는 질문의 키워드를
+분석해 사전에 검증된 답변만 안내합니다.
+
+- 실제 생성형 AI가 아니며 외부 AI API를 사용하지 않습니다.
+- 질문은 최대 240자이며 대화 내용을 저장하거나 전송하지 않습니다.
+- 프로젝트 답변에는 현재 공개된 GitHub 저장소만 연결합니다.
+- 준비되지 않은 질문에는 답변 범위와 추천 질문을 다시 안내합니다.
+
 ## 구조
 
 ```text
@@ -31,10 +42,13 @@
 ├── index.html              # 포트폴리오의 의미 구조
 ├── styles.css              # 반응형 디자인과 접근성 스타일
 ├── src/
-│   ├── main.js             # 페이지 초기화
-│   └── portfolio.js        # 프로필·프로젝트 데이터와 카드 렌더링
+│   ├── main.js             # 페이지와 도슨트 초기화
+│   ├── portfolio.js        # 프로필·프로젝트 데이터와 카드 렌더링
+│   ├── docent-data.js      # 검증된 도슨트 질문·키워드·답변
+│   └── docent.js           # 질문 검증·라우팅·대화 UI
 ├── tests/
-│   └── portfolio.test.mjs  # 포지셔닝·증거·링크·문서 검증
+│   ├── portfolio.test.mjs  # 포지셔닝·증거·링크·문서 검증
+│   └── docent.test.mjs     # 도슨트 라우팅·입력 경계 검증
 └── README.md
 ```
 
@@ -66,6 +80,9 @@ python -m http.server 4173
 4. Build Command와 Output Directory는 비워둡니다.
 5. 배포 후 로그인하지 않은 브라우저에서 공개 URL을 확인합니다.
 6. 새 배포가 검증되기 전에는 기존 포트폴리오 프로젝트를 삭제하거나 도메인을 이동하지 않습니다.
+
+기존 [reliable-ai-engineer-portfolio](https://reliable-ai-engineer-portfolio.vercel.app/)는
+별도 프로젝트로 계속 유지하며 이 저장소의 배포 과정에서 수정하거나 삭제하지 않습니다.
 
 ## 알려진 한계
 
