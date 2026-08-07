@@ -12,6 +12,36 @@ export const profile = {
 
 export const projects = [
   {
+    title: "Pima Diabetes EDA Dashboard",
+    status: "built",
+    statusLabel: "Built",
+    summary:
+      "숨은 결측치, 진단 그룹별 분포와 변수 관계를 탐색하는 Streamlit 데이터 분석 대시보드입니다.",
+    focus: ["Data quality", "EDA", "Streamlit"],
+    evidence: [
+      "공개 Python 소스 코드",
+      "프로젝트 목적과 구조를 설명하는 README",
+      "의료 진단용이 아닌 교육 프로젝트라는 사용 한계 명시",
+    ],
+    url: "https://github.com/SJeongHyeon/Streamlit",
+    linkLabel: "GitHub에서 코드 보기",
+  },
+  {
+    title: "MNIST 분류 · 자전거 수요 회귀",
+    status: "built",
+    statusLabel: "Built",
+    summary:
+      "CNN 이미지 분류와 회귀 모델을 Streamlit 인터페이스로 실험한 딥러닝 미니 프로젝트입니다.",
+    focus: ["CNN", "Regression", "Model serving"],
+    evidence: [
+      "MNIST 분류와 자전거 회귀 공개 코드",
+      "학습된 모델 파일과 실행 진입점",
+      "다음 개선 대상으로 README와 실패 사례 분석을 공개",
+    ],
+    url: "https://github.com/SJeongHyeon/MINI-TEST",
+    linkLabel: "GitHub에서 코드 보기",
+  },
+  {
     title: "6강 Streamlit 장르예측앱",
     status: "built",
     statusLabel: "Built",
