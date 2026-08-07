@@ -147,11 +147,11 @@ p {
 
 h1 {
   margin-bottom: 1.7rem;
-  font-size: clamp(3rem, 6.2vw, 6rem);
+  font-size: clamp(2.8rem, 5.6vw, 5.4rem);
   font-weight: 650;
   letter-spacing: -0.065em;
   line-height: 0.92;
-  max-width: none;
+  max-width: 9.3ch;
 }
 
 h1 em {
@@ -951,6 +951,10 @@ footer {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+
+
 
 
 

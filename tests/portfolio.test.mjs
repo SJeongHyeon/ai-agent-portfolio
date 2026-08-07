@@ -51,7 +51,7 @@ test("page provides recruiter-focused navigation and sections", async () => {
     assert.match(html, new RegExp(`id="${id}"`));
   }
 
-  assert.match(html, /배우고, 만들고, 검증한 기록/);
+  assert.match(html, /프로젝트/);
   assert.match(html, /Built · Building · Exploring/);
 });
 
@@ -62,7 +62,7 @@ test("page uses the approved growth narrative", async () => {
     "배우기 위해 만들고",
     "신뢰를 얻기 위해 검증합니다",
     "배움을 결과물로 바꾸는 과정",
-    "배우고, 만들고, 검증한 기록",
+    "프로젝트",
     "AI 에이전트 개발자로 가는 여정",
     "계속 검증하며 성장하는 개발자",
   ]) {
@@ -100,3 +100,5 @@ test("README documents the docent privacy and deployment boundary", async () => 
   assert.match(readme, /대화 내용을 저장하거나 전송하지 않습니다/);
   assert.match(readme, /reliable-ai-engineer-portfolio/);
 });
+
+
