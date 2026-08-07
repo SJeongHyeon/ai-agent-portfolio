@@ -56,7 +56,7 @@ export const projects = [
     url: "https://ai-music-my6hspe8sftupha2sabjag.streamlit.app/",
     linkLabel: "Streamlit 보기",
     codeUrl: "https://github.com/SJeongHyeon/AI-music",
-    codeLabel: "Python Code Analysis",
+    codeLabel: "GitHub에서 코드 보기",
   },
   {
     title: "Reliable Tool-Calling Agent",
@@ -137,4 +137,5 @@ export function renderProjectCard(project) {
     </article>
   `;
 }
+
 
