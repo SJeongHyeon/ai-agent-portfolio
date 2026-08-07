@@ -23,8 +23,10 @@ export const projects = [
       "프로젝트 목적과 구조를 설명하는 README",
       "의료 진단용이 아닌 교육 프로젝트라는 사용 한계 명시",
     ],
-    url: "https://github.com/SJeongHyeon/Streamlit",
-    linkLabel: "GitHub에서 코드 보기",
+    codeUrl: "https://github.com/SJeongHyeon/Streamlit",
+    codeLabel: "GitHub에서 코드 보기",
+    demoUrl: "https://app-mnwavumy2ofm2vx4kh4aph.streamlit.app/",
+    demoLabel: "라이브데모",
   },
   {
     title: "MNIST 분류 · 자전거 수요 회귀",
@@ -38,8 +40,10 @@ export const projects = [
       "학습된 모델 파일과 실행 진입점",
       "다음 개선 대상으로 README와 실패 사례 분석을 공개",
     ],
-    url: "https://github.com/SJeongHyeon/MINI-TEST",
-    linkLabel: "GitHub에서 코드 보기",
+    codeUrl: "https://github.com/SJeongHyeon/MINI-TEST",
+    codeLabel: "GitHub에서 코드 보기",
+    demoUrl: "https://mini-test-vn5fwt5rqftsmqx5hsk4rh.streamlit.app/",
+    demoLabel: "라이브데모",
   },
   {
     title: "장르예측앱(Streamlit)",
@@ -53,10 +57,10 @@ export const projects = [
       "멜스펙트로그램과 예측 근거를 함께 보여주는 UI",
       "GitHub 코드와 Streamlit 라이브 데모를 함께 연결",
     ],
-    url: "https://ai-music-my6hspe8sftupha2sabjag.streamlit.app/",
-    linkLabel: "Streamlit 보기",
     codeUrl: "https://github.com/SJeongHyeon/AI-music",
     codeLabel: "GitHub에서 코드 보기",
+    demoUrl: "https://ai-music-my6hspe8sftupha2sabjag.streamlit.app/",
+    demoLabel: "라이브데모",
   },
   {
     title: "Reliable Tool-Calling Agent",
@@ -112,9 +116,17 @@ export function renderProjectCard(project) {
   const evidence = project.evidence
     .map((item) => `<li>${escapeHtml(item)}</li>`)
     .join("");
-  const codeLink = renderLinkButton(project.codeUrl, project.codeLabel, "project-link project-link--code");
-  const demoLink = renderLinkButton(project.url, project.linkLabel, "project-link project-link--demo");
-  const fallbackLink = project.url
+  const codeLink = renderLinkButton(
+    project.codeUrl ?? project.url,
+    project.codeLabel ?? project.linkLabel,
+    "project-link project-link--code"
+  );
+  const demoLink = renderLinkButton(
+    project.demoUrl ?? project.url,
+    project.demoLabel ?? project.linkLabel,
+    "project-link project-link--demo"
+  );
+  const fallbackLink = project.demoUrl || project.url
     ? ""
     : `<span class="project-link project-link--muted">진행 내용을 정리 중입니다</span>`;
 
