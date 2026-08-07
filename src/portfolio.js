@@ -42,34 +42,21 @@ export const projects = [
     linkLabel: "GitHub에서 코드 보기",
   },
   {
-    title: "6강 Streamlit 장르예측앱",
+    title: "장르예측앱(Streamlit)",
     status: "built",
     statusLabel: "Built",
     summary:
       "RandomForest와 멜스펙트로그램 피처를 이용해 WAV 파일의 장르를 예측하는 Streamlit 앱입니다.",
-    focus: ["Streamlit", "RandomForest", "Audio features"],
+    focus: ["Python Code Analysis", "Streamlit", "Audio features"],
     evidence: [
       "WAV 업로드 → 장르 예측 → 확률 결과를 한 화면에 표시",
       "멜스펙트로그램과 예측 근거를 함께 보여주는 UI",
-      "GitHub 푸시 후 Streamlit 배포 링크로 바로 연결",
-    ],
-    url: "https://ai-music-tapeevrzjuwxhjjtbv2h23.streamlit.app/",
-    linkLabel: "라이브 데모",
-  },
-  {
-    title: "7강 Streamlit 고급 ResNet도입",
-    status: "built",
-    statusLabel: "Built",
-    summary:
-      "ResNet-18 전이학습과 신뢰도 표현을 더해 장르 예측 결과를 한 단계 확장한 Streamlit 앱입니다.",
-    focus: ["ResNet18", "Transfer learning", "Confidence"],
-    evidence: [
-      "Top-1 / Top-2 확률 차이를 보여주는 신뢰도 시각화",
-      "Conv1 필터와 멜스펙트로그램의 패턴 비교",
-      "멀티파일 비교와 결과 이력 테이블",
+      "GitHub 코드와 Streamlit 라이브 데모를 함께 연결",
     ],
     url: "https://ai-music-my6hspe8sftupha2sabjag.streamlit.app/",
-    linkLabel: "라이브 데모",
+    linkLabel: "Streamlit 보기",
+    codeUrl: "https://github.com/SJeongHyeon/AI-music",
+    codeLabel: "Python Code Analysis",
   },
   {
     title: "Reliable Tool-Calling Agent",
@@ -110,6 +97,14 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function renderLinkButton(url, label, className = "project-link") {
+  if (!url) {
+    return "";
+  }
+
+  return `<a class="${className}" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`;
+}
+
 export function renderProjectCard(project) {
   const tags = project.focus
     .map((item) => `<li>${escapeHtml(item)}</li>`)
@@ -117,8 +112,10 @@ export function renderProjectCard(project) {
   const evidence = project.evidence
     .map((item) => `<li>${escapeHtml(item)}</li>`)
     .join("");
-  const link = project.url
-    ? `<a class="project-link" href="${escapeHtml(project.url)}" target="_blank" rel="noreferrer">${escapeHtml(project.linkLabel)}</a>`
+  const codeLink = renderLinkButton(project.codeUrl, project.codeLabel, "project-link project-link--code");
+  const demoLink = renderLinkButton(project.url, project.linkLabel, "project-link project-link--demo");
+  const fallbackLink = project.url
+    ? ""
     : `<span class="project-link project-link--muted">진행 내용을 정리 중입니다</span>`;
 
   return `
@@ -133,7 +130,11 @@ export function renderProjectCard(project) {
         <h4>검증 가능한 증거</h4>
         <ul>${evidence}</ul>
       </div>
-      ${link}
+      <div class="project-links">
+        ${codeLink}
+        ${demoLink || fallbackLink}
+      </div>
     </article>
   `;
 }
+

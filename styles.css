@@ -123,7 +123,7 @@ nav a:focus-visible {
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 0.72fr);
-  gap: clamp(3rem, 8vw, 7rem);
+  gap: clamp(4rem, 9vw, 8rem);
   align-items: center;
   min-height: calc(100vh - 5.25rem);
   padding-block: 6rem;
@@ -147,7 +147,7 @@ p {
 
 h1 {
   margin-bottom: 1.7rem;
-  font-size: clamp(3.1rem, 7.2vw, 6.8rem);
+  font-size: clamp(3rem, 6.2vw, 6rem);
   font-weight: 650;
   letter-spacing: -0.065em;
   line-height: 0.92;
@@ -476,17 +476,44 @@ h2 {
   font-size: 0.9rem;
 }
 
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: auto;
+}
+
 .project-link {
   display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   width: fit-content;
-  margin-top: auto;
-  color: var(--acid);
+  min-height: 2.65rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  background: rgb(255 255 255 / 3%);
+  color: var(--ink);
   font-weight: 700;
   text-decoration: none;
 }
 
 .project-link::after {
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
+  content: "↗";
+}
+
+.project-link--code {
+  background: rgb(255 255 255 / 2%);
+}
+
+.project-link--demo {
+  border-color: rgba(184, 255, 92, 0.55);
+  background: var(--acid);
+  color: #071311;
+}
+
+.project-link--demo::after {
   content: "↗";
 }
 
@@ -924,4 +951,8 @@ footer {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+
+
 
