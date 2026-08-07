@@ -12,34 +12,34 @@ export const profile = {
 
 export const projects = [
   {
-    title: "Pima Diabetes EDA Dashboard",
+    title: "6강 Streamlit 장르예측앱",
     status: "built",
     statusLabel: "Built",
     summary:
-      "숨은 결측치, 진단 그룹별 분포와 변수 관계를 탐색하는 Streamlit 데이터 분석 대시보드입니다.",
-    focus: ["Data quality", "EDA", "Streamlit"],
+      "RandomForest와 멜스펙트로그램 피처를 이용해 WAV 파일의 장르를 예측하는 Streamlit 앱입니다.",
+    focus: ["Streamlit", "RandomForest", "Audio features"],
     evidence: [
-      "공개 Python 소스 코드",
-      "프로젝트 목적과 구조를 설명하는 README",
-      "의료 진단용이 아닌 교육 프로젝트라는 사용 한계 명시",
+      "WAV 업로드 → 장르 예측 → 확률 결과를 한 화면에 표시",
+      "멜스펙트로그램과 예측 근거를 함께 보여주는 UI",
+      "GitHub 푸시 후 Streamlit 배포 링크로 바로 연결",
     ],
-    url: "https://github.com/SJeongHyeon/Streamlit",
-    linkLabel: "GitHub에서 코드 보기",
+    url: "https://ai-music-tapeevrzjuwxhjjtbv2h23.streamlit.app/",
+    linkLabel: "라이브 데모",
   },
   {
-    title: "MNIST 분류 · 자전거 수요 회귀",
+    title: "7강 Streamlit 고급 ResNet도입",
     status: "built",
     statusLabel: "Built",
     summary:
-      "CNN 이미지 분류와 회귀 모델을 Streamlit 인터페이스로 실험한 딥러닝 미니 프로젝트입니다.",
-    focus: ["CNN", "Regression", "Model serving"],
+      "ResNet-18 전이학습과 신뢰도 표현을 더해 장르 예측 결과를 한 단계 확장한 Streamlit 앱입니다.",
+    focus: ["ResNet18", "Transfer learning", "Confidence"],
     evidence: [
-      "MNIST 분류와 자전거 회귀 공개 코드",
-      "학습된 모델 파일과 실행 진입점",
-      "다음 개선 대상으로 README와 실패 사례 분석을 공개",
+      "Top-1 / Top-2 확률 차이를 보여주는 신뢰도 시각화",
+      "Conv1 필터와 멜스펙트로그램의 패턴 비교",
+      "멀티파일 비교와 결과 이력 테이블",
     ],
-    url: "https://github.com/SJeongHyeon/MINI-TEST",
-    linkLabel: "GitHub에서 코드 보기",
+    url: "https://ai-music-my6hspe8sftupha2sabjag.streamlit.app/",
+    linkLabel: "라이브 데모",
   },
   {
     title: "Reliable Tool-Calling Agent",
