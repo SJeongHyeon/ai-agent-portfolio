@@ -10,26 +10,30 @@ const topic = ({ id, keywords, answer, links = [] }) =>
   });
 
 const suggestedQuestions = Object.freeze([
-  "어떤 개발자가 되고 싶나요?",
+  "말해봄에서 맡은 역할은 무엇인가요?",
   "현재 확인할 수 있는 프로젝트는 무엇인가요?",
-  "실패를 어떻게 다루나요?",
+  "Langfuse에서 무엇을 검증했나요?",
   "지금 가장 집중해서 배우는 것은 무엇인가요?",
 ]);
 
 const topics = Object.freeze([
+  topic({id:'presentation', keywords:['ppt','발표','슬라이드'], answer:'말해봄 Mk.2의 프로젝트 발표용 PPT를 제작했습니다. 발표는 담당하지 않았습니다.'}),
+  topic({id:'observability', keywords:['langfuse','트레이스','관측','토큰'], answer:'말해봄 Mk.2에서 Langfuse의 트레이스와 입출력, 토큰 사용량·비용·지연 시간을 확인하고 오류를 추적했습니다. 프롬프트 버전별 비교 실험과 구분되는 관측 검증 작업입니다.'}),
+  topic({id:'malhaebom', keywords:['말해봄','면접','프롬프트','사람 평가'], answer:'말해봄 Mk.2에서 사람 평가 기준 수립·재검증, 모델 탐색과 프롬프트 버전별 성능·비용·응답 시간 비교를 수행했습니다. Langfuse 검증, 로그인·공고 분석·면접 코칭 E2E 테스트, pytest CI, 코칭 시작 화면·테마 개선과 PPT 제작도 담당했습니다. 코드 저장소는 비공개이며 공개 소개 페이지를 확인할 수 있습니다.', links:[{label:'말해봄 팀 프로젝트 소개',url:'https://nanocode00.github.io/malhaebom-showcase/'}]}),
+  topic({id:'voiceguard', keywords:['보이스가드','보이스피싱','fastapi','railway'], answer:'보이스가드는 통화 녹음을 전사·분류하는 음성 분석 팀 프로젝트입니다. 저는 FastAPI 백엔드 API, 비동기 분석 작업 관리와 Railway 배포를 담당했습니다. 팀의 분류 모델 학습과 성능은 개인 기여와 구분합니다.',links:[{label:'보이스가드 GitHub',url:'https://github.com/aihuman-7th/proj1-e'}]}),
   topic({
     id: "projects",
     keywords: ["프로젝트", "만든 것", "코드", "깃허브", "github"],
     answer:
-      "현재 공개 코드로 확인할 수 있는 작업은 Pima 당뇨병 데이터 EDA 대시보드와 MNIST 분류·자전거 수요 회귀 프로젝트입니다. 완성된 작업은 Built, 구현 중인 내용은 Building, 학습 계획은 Exploring으로 구분해 소개합니다.",
+      "대표 프로젝트는 말해봄 Mk.2와 보이스가드입니다. 말해봄에서는 LLM 평가와 관측·E2E 검증을, 보이스가드에서는 FastAPI 백엔드와 비동기 작업 관리·배포를 맡았습니다. 말해봄 코드는 비공개입니다. 기존 EDA·딥러닝·음악 장르 예측 실습도 학습 프로젝트로 소개합니다.",
     links: [
       {
-        label: "Pima Diabetes EDA Dashboard",
-        url: "https://github.com/SJeongHyeon/Streamlit",
+        label: "말해봄 팀 프로젝트 소개",
+        url: "https://nanocode00.github.io/malhaebom-showcase/",
       },
       {
-        label: "MNIST 분류 · 자전거 수요 회귀",
-        url: "https://github.com/SJeongHyeon/MINI-TEST",
+        label: "보이스가드 GitHub",
+        url: "https://github.com/aihuman-7th/proj1-e",
       },
     ],
   }),
@@ -37,13 +41,13 @@ const topics = Object.freeze([
     id: "failure",
     keywords: ["실패", "한계", "부족", "개선"],
     answer:
-      "실패를 감추기보다 어떤 조건에서 기대와 달랐는지 기록하고 다음 검증 항목으로 바꾸는 것을 중요하게 생각합니다. 현재 프로젝트에는 정량 평가와 실패 사례 문서가 충분하지 않으며, README·평가 데이터·실행 데모를 보강하는 것이 우선 개선 과제입니다.",
+      "실패를 감추기보다 어떤 조건에서 기대와 달랐는지 기록하고 다음 검증 항목으로 바꾸는 것을 중요하게 생각합니다. 평가 버전과 실행 조건을 구분하며, 개별 성공 사례를 전체 서비스 품질로 일반화하지 않습니다. 보이스가드의 정상 통화 오탐과 말해봄의 버전별 평가 범위를 한계로 함께 설명합니다.",
   }),
   topic({
     id: "learning",
     keywords: ["학습", "공부", "기술", "집중", "배우"],
     answer:
-      "현재는 도구 호출이 실패해도 원인을 추적하고 복구할 수 있는 Agent loop를 중심으로 tool schema, timeout, retry, fallback과 tracing을 배우고 있습니다. 이후 STT·TTS와 텍스트 fallback을 연결한 음성 인터페이스로 확장할 계획입니다.",
+      "두 팀 프로젝트에서 얻은 백엔드·LLM 평가·관측 경험을 바탕으로 신뢰할 수 있는 Agent loop와 음성·멀티모달 인터페이스를 계속 학습하고 있습니다.",
   }),
   topic({
     id: "vision",

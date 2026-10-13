@@ -1,34 +1,14 @@
-import { initDocent } from "./docent.js";
-import { profile, projects, renderProjectCard } from "./portfolio.js";
+import { initDocent } from './docent.js';
+import { profile, projects, renderProjectCard, renderProjectDetail } from './portfolio.js';
 
-const positioning = document.querySelector("#profile-positioning");
-const statement = document.querySelector("#profile-statement");
-const vision = document.querySelector("#profile-vision");
-const projectGrid = document.querySelector("#project-grid");
-const currentYear = document.querySelector("#current-year");
-
-if (positioning) {
-  positioning.textContent = profile.positioning;
+for (const [id, value] of [['profile-positioning',profile.positioning],['profile-statement',profile.statement],['profile-vision',profile.vision],['current-year',new Date().getFullYear()]]) {
+  const element=document.getElementById(id);
+  if(element) element.textContent=value;
 }
-
-if (statement) {
-  statement.textContent = profile.statement;
+for(const [id, group] of [['featured-project-grid','featured'],['learning-project-grid','learning']]) {
+  const element=document.getElementById(id);
+  if(element) element.innerHTML=projects.filter(p=>p.group===group).map(renderProjectCard).join('');
 }
-
-if (vision) {
-  vision.textContent = profile.vision;
-}
-
-if (projectGrid) {
-  projectGrid.innerHTML = projects.map(renderProjectCard).join("");
-}
-
-if (currentYear) {
-  currentYear.textContent = String(new Date().getFullYear());
-}
-
-try {
-  initDocent(document);
-} catch (error) {
-  console.error("AI docent initialization failed.", error);
-}
+const details=document.getElementById('project-details');
+if(details) details.innerHTML=projects.filter(p=>p.group==='featured').map(renderProjectDetail).join('');
+try { initDocent(document); } catch(error) { console.error('Portfolio guide initialization failed.',error); }

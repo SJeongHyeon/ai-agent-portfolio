@@ -1,99 +1,63 @@
 # 서정현 — AI Agent Portfolio
 
-배우기 위해 만들고 신뢰를 얻기 위해 검증하는 주니어 AI 에이전트 개발자 포트폴리오입니다.
+두 팀 프로젝트의 개인 기여와 검증 과정을 소개하는 정적 포트폴리오입니다.
 
-[공개 포트폴리오 보기](https://ai-agent-portfolio-theta.vercel.app)
+[공개 포트폴리오](https://ai-agent-portfolio-theta.vercel.app/)
 
 ## 포트폴리오 목표
 
-기술을 많이 나열하기보다 다음 질문에 답할 수 있는 프로젝트를 보여주는 것이 목표입니다.
+채용 담당자가 대표 프로젝트와 담당 역할을 빠르게 파악하고, 기술 면접관이 문제·접근·기여·근거·한계를 확인할 수 있도록 구성했습니다. Junior AI Agent Developer 방향을 유지하며 흑백 디자인을 사용합니다.
 
-- 어떤 문제를 해결하려 했는가?
-- 왜 이 방법을 선택했는가?
-- 무엇으로 결과를 검증했는가?
-- 어떤 조건에서 실패하며 다음에는 무엇을 개선할 것인가?
+## 대표 프로젝트와 검증 가능한 증거
 
-프로젝트는 과장을 피하기 위해 `Built`, `Building`, `Exploring`으로 구분합니다.
+| 프로젝트 | 개인 기여 | 공개 자료 |
+| --- | --- | --- |
+| 말해봄 Mk.2 | 사람 평가 기준 수립·재검증, 모델·프롬프트 비교, Langfuse 검증, E2E·pytest CI, UI 개선, PPT 제작 | [팀 소개](https://nanocode00.github.io/malhaebom-showcase/) / 코드 비공개 |
+| 보이스가드 | FastAPI API, 비동기 분석 작업 관리, Railway 배포 | [팀 저장소](https://github.com/aihuman-7th/proj1-e) |
 
-## 검증 가능한 증거
+Langfuse 검증은 트레이스·입출력, 토큰·비용·지연 시간 확인과 오류 추적입니다. PPT는 제작만 담당했고 발표는 담당하지 않았습니다. 과거 평가·개별 API 성공과 최신 서비스 전체 품질을 구분합니다. 팀의 모델 성능을 개인 개발 성과로 표현하지 않습니다.
 
-현재 공개 저장소에서 확인할 수 있는 프로젝트:
+## 페이지 구성
 
-- [Pima Diabetes EDA Dashboard](https://github.com/SJeongHyeon/Streamlit)
-- [MNIST 분류 · 자전거 수요 회귀](https://github.com/SJeongHyeon/MINI-TEST)
+소개 → 대표 프로젝트 → 개인 기여·검증 상세 → 역량 → 학습 프로젝트 → 관심 분야·GitHub 연락 경로.
 
-현재 구현 중인 Reliable Tool-Calling Agent와 탐구 중인 Voice & Multimodal Agent는 완성된 프로젝트로 주장하지 않습니다. 코드와 평가 결과가 준비되면 별도 저장소로 공개합니다.
-
-## 키워드 기반 AI 도슨트
-
-방문자는 추천 질문을 누르거나 직접 질문해 프로젝트, 실패 경험, 현재 학습,
-개발 철학과 미래 비전을 살펴볼 수 있습니다. 도슨트는 질문의 키워드를
-분석해 사전에 검증된 답변만 안내합니다.
-
-- 실제 생성형 AI가 아니며 외부 AI API를 사용하지 않습니다.
-- 질문은 최대 240자이며 대화 내용을 저장하거나 전송하지 않습니다.
-- 프로젝트 답변에는 현재 공개된 GitHub 저장소만 연결합니다.
-- 준비되지 않은 질문에는 답변 범위와 추천 질문을 다시 안내합니다.
+기존 EDA, MNIST·회귀, 음악 장르 예측은 학습 프로젝트로 보존합니다.
 
 ## 구조
 
-```text
-.
-├── index.html              # 포트폴리오의 의미 구조
-├── styles.css              # 반응형 디자인과 접근성 스타일
-├── src/
-│   ├── main.js             # 페이지와 도슨트 초기화
-│   ├── portfolio.js        # 프로필·프로젝트 데이터와 카드 렌더링
-│   ├── docent-data.js      # 검증된 도슨트 질문·키워드·답변
-│   └── docent.js           # 질문 검증·라우팅·대화 UI
-├── tests/
-│   ├── portfolio.test.mjs  # 포지셔닝·증거·링크·문서 검증
-│   └── docent.test.mjs     # 도슨트 라우팅·입력 경계 검증
-└── README.md
-```
-
-프레임워크 의존성을 두지 않아 코드와 배포 흐름을 쉽게 이해할 수 있도록 구성했습니다.
+- index.html: 의미 구조와 접근성, 도슨트 UI
+- styles.css: 흑백 팔레트, 반응형 레이아웃
+- src/portfolio.js: 프로필·프로젝트 데이터, 카드와 상세 렌더링
+- src/main.js: 그룹별 화면 초기화
+- src/docent-data.js: 사전 작성 질문·답변
+- src/docent.js: 입력 검증과 도슨트 동작
+- tests/: 렌더링·링크·라우팅·입력 경계 회귀 테스트
 
 ## 로컬 실행
 
-테스트:
+Node.js가 있는 환경에서 `npm test`로 검증합니다. 프로덕션 패키지 의존성은 없습니다.
 
-```bash
+```sh
 npm test
+python -m http.server 4173 --bind 127.0.0.1
 ```
 
-로컬 서버:
+http://127.0.0.1:4173 에서 확인합니다. 브라우저의 파일 직접 열기 대신 HTTP 서버를 사용해 ES modules를 로드합니다.
 
-```bash
-python -m http.server 4173
-```
+## 키워드 기반 AI 도슨트
 
-브라우저에서 `http://localhost:4173`을 엽니다.
+실제 생성형 AI가 아니며 외부 AI API를 사용하지 않습니다. 사전 작성된 포트폴리오 답변만 제공합니다. 질문은 최대 240자이고 대화 내용을 저장하거나 전송하지 않습니다. 준비되지 않은 질문은 안내 가능한 범위를 알려줍니다.
 
 ## Vercel 배포
 
-이 저장소를 GitHub에 게시한 뒤 Vercel에서 새 프로젝트로 가져옵니다.
+기존 SJeongHyeon/ai-agent-portfolio 저장소와 Vercel 프로젝트를 사용합니다. Framework Preset은 Other이며 별도 빌드 없이 정적 파일을 제공합니다. 변경 브랜치를 검토한 뒤 승인된 변경을 GitHub에 반영하고 Vercel의 배포 결과를 확인합니다.
 
-1. Vercel의 `Add New` → `Project`를 선택합니다.
-2. `SJeongHyeon/ai-agent-portfolio` 저장소를 선택합니다.
-3. Framework Preset은 `Other`를 사용합니다.
-4. Build Command와 Output Directory는 비워둡니다.
-5. 배포 후 로그인하지 않은 브라우저에서 공개 URL을 확인합니다.
-6. 새 배포가 검증되기 전에는 기존 포트폴리오 프로젝트를 삭제하거나 도메인을 이동하지 않습니다.
-
-기존 [reliable-ai-engineer-portfolio](https://reliable-ai-engineer-portfolio.vercel.app/)는
-별도 프로젝트로 계속 유지하며 이 저장소의 배포 과정에서 수정하거나 삭제하지 않습니다.
+기존 reliable-ai-engineer-portfolio 및 Streamlit·MINI-TEST 프로젝트를 삭제하거나 이동하지 않습니다. 새 배포 검증 전 기존 공개 사이트를 유지합니다.
 
 ## 알려진 한계
 
-- 현재 Built 프로젝트들의 정량 평가와 실패 사례 문서가 충분하지 않습니다.
-- 연락 수단은 GitHub만 제공합니다.
-- Reliable Tool-Calling Agent와 Voice & Multimodal Agent는 아직 구현 또는 탐구 단계입니다.
-- 프로젝트별 실행 데모 링크와 2분 시연 영상은 후속 개선 항목입니다.
-
-## 다음 개선 순서
-
-1. `Streamlit` README에 실행 화면과 데이터 품질 분석 추가
-2. `MINI-TEST` README와 모델 평가·실패 사례 추가
-3. Reliable Tool-Calling Agent의 최소 실행 루프와 평가 데이터 공개
-4. STT·TTS와 텍스트 fallback을 결합한 음성 인터페이스 확장
+- 말해봄 코드와 상세 내부 실험 기록은 비공개이며 공개 소개와 개인 기여 요약만 제공합니다.
+- 서비스 흐름 도식은 설명용이며 실제 서비스 화면 캡처가 아닙니다.
+- 과거 평가 기록은 현재 운영 버전의 성공·품질을 보장하지 않습니다.
+- 이 개편은 포트폴리오 UI 검증이며 두 팀 서비스의 신규 E2E 테스트를 수행한 것은 아닙니다.
+- 연락 수단은 GitHub입니다.
