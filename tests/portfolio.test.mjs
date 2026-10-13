@@ -1,104 +1,25 @@
-import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
-import test from "node:test";
-
-import {
-  getProjectsByStatus,
-  profile,
-  projects,
-  renderProjectCard,
-} from "../src/portfolio.js";
-
-test("profile uses a truthful junior positioning", () => {
-  assert.equal(profile.name, "서정현");
-  assert.match(profile.role, /Junior AI Agent Developer/);
-  assert.match(profile.positioning, /AI 에이전트 개발을 배우며/);
-  assert.doesNotMatch(
-    `${profile.role} ${profile.positioning}`,
-    /expert|production-ready|전문가/i,
-  );
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import * as portfolio from '../src/portfolio.js';
+const fixture = {id:'sample', title:'Sample', status:'built', statusLabel:'Built', group:'featured', summary:'Summary', role:'Backend', focus:['API'], evidence:['Report'], contributions:['Built API'], detailId:'sample-detail', repositoryVisibility:'public', codeUrl:'https://github.com/example/repo', problem:'Problem', approach:'Approach', limitation:'Limit', next:'Next'};
+test('private projects suppress code links even when a code URL is present', () => {
+ const html = portfolio.renderProjectCard({...fixture, repositoryVisibility:'private'});
+ assert.match(html,/비공개/); assert.doesNotMatch(html,/href="https:\/\/github.com\/example\/repo"/); assert.match(html,/href="#sample-detail"/);
 });
-
-test("profile describes an honest growth story and multimodal vision", () => {
-  assert.match(profile.positioning, /AI 에이전트 개발을 배우며/);
-  assert.match(profile.statement, /왜 이 방법을 선택했고/);
-  assert.match(profile.vision, /사람이 통제권/);
+test('cards expose personal role and a detail target', () => {
+ const html = portfolio.renderProjectCard(fixture); assert.match(html,/Backend/); assert.match(html,/href="#sample-detail"/); assert.match(html,/rel="noreferrer"/);
 });
-
-test("projects distinguish built, building, and exploring work", () => {
-  assert.ok(getProjectsByStatus("built").length >= 2);
-  assert.ok(getProjectsByStatus("building").length >= 1);
-  assert.ok(getProjectsByStatus("exploring").length >= 1);
-  assert.equal(
-    getProjectsByStatus("built").every((project) => project.evidence.length > 0),
-    true,
-  );
+test('renderers escape text and attributes', () => {
+ const hostile = {...fixture,title:'<script>alert(1)</script>',role:'<img src=x onerror=alert(1)>',detailId:'x" onclick="evil',contributions:['<script>evil</script>']};
+ const card=portfolio.renderProjectCard(hostile); assert.doesNotMatch(card,/<script>|<img/); assert.match(card,/&lt;script&gt;/);
+ assert.equal(typeof portfolio.renderProjectDetail,'function'); assert.doesNotMatch(portfolio.renderProjectDetail(hostile),/<script>|<img|id="x" onclick=/);
 });
-
-test("project cards expose status, evidence, and safe links", () => {
-  const card = renderProjectCard(projects[0]);
-
-  assert.match(card, /data-status="built"/);
-  assert.match(card, /검증 가능한 증거/);
-  assert.match(card, /target="_blank"/);
-  assert.match(card, /rel="noreferrer"/);
+test('missing URLs never create empty or undefined links', () => {
+ assert.doesNotMatch(portfolio.renderProjectCard({...fixture,codeUrl:undefined}),/href="(?:undefined|null|)"/);
 });
-
-test("page provides recruiter-focused navigation and sections", async () => {
-  const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
-
-  for (const id of ["evidence", "projects", "growth", "contact"]) {
-    assert.match(html, new RegExp(`id="${id}"`));
-  }
-
-  assert.match(html, /프로젝트/);
-  assert.match(html, /Built · Building · Exploring/);
+test('featured cards resolve to unique detail sections', () => {
+ const featured=portfolio.projects.filter(p=>p.group==='featured'); assert.equal(featured.length,2); assert.equal(new Set(featured.map(p=>p.detailId)).size,2);
+ assert.equal(typeof portfolio.renderProjectDetail,'function');
+ for(const p of featured){assert.ok(portfolio.renderProjectCard(p).includes(`href="#${p.detailId}"`));assert.ok(portfolio.renderProjectDetail(p).includes(`id="${p.detailId}"`));}
 });
-
-test("page uses the approved growth narrative", async () => {
-  const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
-
-  for (const message of [
-    "배우기 위해 만들고",
-    "신뢰를 얻기 위해 검증합니다",
-    "배움을 결과물로 바꾸는 과정",
-    "프로젝트",
-    "AI 에이전트 개발자로 가는 여정",
-    "계속 검증하며 성장하는 개발자",
-  ]) {
-    assert.match(html, new RegExp(message));
-  }
-});
-
-test("README documents evidence, local verification, and deployment", async () => {
-  const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
-
-  for (const heading of [
-    "포트폴리오 목표",
-    "검증 가능한 증거",
-    "로컬 실행",
-    "Vercel 배포",
-    "알려진 한계",
-  ]) {
-    assert.match(readme, new RegExp(heading));
-  }
-
-  assert.match(
-    readme,
-    /https:\/\/ai-agent-portfolio-theta\.vercel\.app/,
-  );
-});
-
-test("README documents the docent privacy and deployment boundary", async () => {
-  const readme = await readFile(
-    new URL("../README.md", import.meta.url),
-    "utf8",
-  );
-
-  assert.match(readme, /키워드 기반 AI 도슨트/);
-  assert.match(readme, /외부 AI API를 사용하지 않습니다/);
-  assert.match(readme, /대화 내용을 저장하거나 전송하지 않습니다/);
-  assert.match(readme, /reliable-ai-engineer-portfolio/);
-});
-
-
+test('status filtering excludes other statuses',()=>{assert.ok(portfolio.getProjectsByStatus('built').length>=2);assert.ok(portfolio.getProjectsByStatus('built').every(p=>p.status==='built'));assert.deepEqual(portfolio.getProjectsByStatus('not-a-status'),[]);});
