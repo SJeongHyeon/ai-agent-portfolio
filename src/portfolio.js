@@ -46,6 +46,8 @@ export const projects = [
     "contributionUrl": "https://github.com/SJeongHyeon/credit-pulse/blob/main/CONTRIBUTIONS.md",
     "showcaseUrl": "https://github.com/SJeongHyeon/credit-pulse/blob/main/docs/case-studies/term-bridge-rejected.md",
     "showcaseLabel": "미채택 실험 사례",
+    "serviceUrl": "https://creditpulse-api-236552047198.asia-northeast3.run.app/",
+    "serviceLabel": "서비스 방문",
     "demoUrl": "https://github.com/SJeongHyeon/credit-pulse/blob/main/docs/demo/creditpulse_demo.mp4",
     "demoLabel": "시연 영상",
     "evidenceNote": "수치는 팀 실행 결과이며 개인 기여는 공개 사본의 CONTRIBUTIONS.md에 구분했습니다. 영상은 키 없는 데모 모드 녹화입니다."
@@ -129,7 +131,9 @@ export const projects = [
     "codeLabel": "GitHub 코드",
     "contributionUrl": "https://github.com/SJeongHyeon/voiceguard/blob/main/CONTRIBUTIONS.md",
     "showcaseUrl": "https://github.com/SJeongHyeon/voiceguard/blob/main/docs/specs/pytorch-classifier-runtime.md",
-    "showcaseLabel": "분류기 되돌림 기록",
+    "showcaseLabel": "ONNX 실험과 PyTorch 복귀",
+    "serviceUrl": "https://voice-guard-project.netlify.app/",
+    "serviceLabel": "서비스 화면 보기",
     "demoUrl": "https://github.com/SJeongHyeon/voiceguard/blob/main/docs/demo/voiceguard_demo.mp4",
     "demoLabel": "시연 영상",
     "evidence": [
@@ -149,7 +153,7 @@ export const projects = [
     "approach": "팀의 음성 분석 파이프라인을 FastAPI 서비스와 연결하고, 분석 작업의 상태와 결과를 조회하는 흐름을 구현했습니다.",
     "limitation": "모델 결과는 참고 정보입니다. 팀 평가에서 정상 통화 오탐이 확인되어 추가 개선이 필요하며, 모델 학습·분류 성능은 제 개인 개발 성과와 구분합니다.",
     "next": "분석 작업의 실패·복구 조건과 배포 환경에서의 처리 시간을 더 체계적으로 기록하고 검증하고 싶습니다.",
-    "evidenceNote": "개인 구현·되돌림 기록은 공개용 사본의 CONTRIBUTIONS.md, 분류 평가 조건은 README에서 확인할 수 있습니다. 현재 운영 백엔드는 내려가 있어 시연 영상으로 동작을 확인할 수 있습니다."
+    "evidenceNote": "개인 구현·분류기 전환 기록은 공개용 사본의 CONTRIBUTIONS.md, 분류 평가 조건은 README에서 확인할 수 있습니다. 서비스 화면은 열리지만 분석 백엔드는 내려가 있어 전체 동작은 시연 영상으로 확인할 수 있습니다."
   },
   {
     "title": "Pima Diabetes EDA Dashboard",
@@ -275,6 +279,7 @@ function link(url, label) {
 function projectLinks(project) {
   return (project.repositoryVisibility === 'private' ? '<span class="private-note">코드 저장소 비공개</span>' : link(project.codeUrl,project.codeLabel || 'GitHub 코드'))
     + link(project.showcaseUrl,project.showcaseLabel || '프로젝트 소개')
+    + link(project.serviceUrl,project.serviceLabel || '서비스 방문')
     + link(project.demoUrl,project.demoLabel || '라이브 데모');
 }
 

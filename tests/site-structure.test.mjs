@@ -59,3 +59,10 @@ test('deployment copy separates implemented APIs from verified account isolation
  assert.doesNotMatch(html,/심사 API·계정 분리와/);
  assert.match(html,/GitHub 프로필에서 연락처 보기/);
 });
+
+test('section headings do not end with a period', async () => {
+ const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
+ const headings=[...html.matchAll(/<h[12][^>]*>([\s\S]*?)<\/h[12]>/g)].map(([,content])=>content.replace(/<[^>]*>/g,'').trim());
+ assert.ok(headings.length>=5);
+ for (const heading of headings) assert.doesNotMatch(heading,/\.$/,heading);
+});

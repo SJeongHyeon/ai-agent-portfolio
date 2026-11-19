@@ -70,3 +70,20 @@ test('featured project links name their own destinations', () => {
    assert.match(card,new RegExp(project.title.replaceAll('.', '\\.')+' 기여·검증 보기'));
  }
 });
+
+test('CreditPulse and Voiceguard link to their services as well as demo videos', () => {
+ for (const id of ['creditpulse','voiceguard']) {
+  const project=portfolio.projects.find(item=>item.id===id);
+  assert.ok(project.serviceUrl?.startsWith('https://'));
+  assert.notEqual(project.serviceUrl,project.demoUrl);
+  const card=portfolio.renderProjectCard(project);
+  const detail=portfolio.renderProjectDetail(project);
+  for (const html of [card,detail]) {
+   assert.ok(html.includes(project.serviceLabel));
+   assert.ok(html.includes(`href="${project.serviceUrl}"`));
+   assert.ok(html.includes(`href="${project.demoUrl}"`));
+  }
+ }
+ const voiceguard=portfolio.projects.find(item=>item.id==='voiceguard');
+ assert.equal(voiceguard.showcaseLabel,'ONNX 실험과 PyTorch 복귀');
+});
