@@ -99,7 +99,7 @@ test("prepared answers and links contain no executable markup", () => {
 });
 
 test('specific project questions outrank generic project words',()=>{
- for(const [question,topic] of [['말해봄 프로젝트에서 무엇을 했나요?','malhaebom'],['보이스가드 프로젝트 역할은?','voiceguard'],['Langfuse에서 확인한 것은?','observability'],['PPT도 발표했나요?','presentation']]){
+ for(const [question,topic] of [['말해봄 프로젝트에서 무엇을 했나요?','malhaebom'],['보이스가드 프로젝트 역할은?','voiceguard'],['Langfuse에서 확인한 것은?','observability']]){
   const result=selectDocentResponse(question);assert.equal(result.topic,topic);assert.equal(result.fallback,false);assert.ok(result.links.every(link=>!link.url.includes('aihuman-7th/proj2-3')));
  }
 });

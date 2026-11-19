@@ -51,17 +51,36 @@ test('featured evidence keeps its conditions and source together', () => {
 test('other featured cases show dated evidence and personal implementation', () => {
  const malhaebom=portfolio.projects.find(p=>p.id==='malhaebom');
  const malhaebomCard=portfolio.renderProjectCard(malhaebom);
- assert.match(malhaebomCard,/57\/90/);
- assert.match(malhaebomCard,/합성 입력 30건×3회/);
+ assert.match(malhaebomCard,/품질 회귀/);
+ assert.match(malhaebomCard,/22\/30 → 20\/30/);
  assert.match(malhaebomCard,/EVAL_REPORT.md/);
+ assert.match(portfolio.renderProjectDetail(malhaebom),/57\/90/);
+ assert.match(portfolio.renderProjectDetail(malhaebom),/교체를 보류/);
  assert.match(portfolio.renderProjectDetail(malhaebom),/현재 운영 구성의 사람 품질 점수/);
  assert.match(portfolio.renderProjectDetail(malhaebom),/EVAL_REPORT.md/);
  const voiceguard=portfolio.renderProjectDetail(portfolio.projects.find(p=>p.id==='voiceguard'));
  assert.match(voiceguard,/상태·결과·취소 API/);
- assert.match(voiceguard,/0.99 이상으로 포화/);
- assert.match(voiceguard,/PyTorch로 되돌렸습니다/);
- assert.match(voiceguard,/docs\/specs\/pytorch-classifier-runtime.md/);
+ assert.match(voiceguard,/실패·취소 시 임시 분석 데이터/);
+ assert.match(voiceguard,/app\/jobs\/runner.py/);
+ assert.doesNotMatch(voiceguard,/ONNX|PyTorch|pytorch-classifier-runtime/);
  assert.match(voiceguard,/CONTRIBUTIONS.md/);
+});
+
+test('CreditPulse explains injection defenses and their measured limits', () => {
+ const credit=portfolio.projects.find(p=>p.id==='creditpulse');
+ const detail=portfolio.renderProjectDetail(credit);
+ assert.match(detail,/질문·저장 규칙·응답/);
+ assert.match(detail,/프롬프트 인젝션/);
+ assert.match(detail,/실제 모델 레드팀/);
+ assert.match(detail,/미차단 유형/);
+ assert.doesNotMatch(detail,/참고 뉴스를 선별/);
+});
+
+test('case studies prioritize engineering contributions over peripheral activities', () => {
+ const malhaebom=portfolio.renderProjectDetail(portfolio.projects.find(p=>p.id==='malhaebom'));
+ assert.doesNotMatch(malhaebom,/PPT|테마를 개선/);
+ const voiceguard=portfolio.renderProjectDetail(portfolio.projects.find(p=>p.id==='voiceguard'));
+ assert.doesNotMatch(voiceguard,/FastAPI 기반 백엔드 API를 담당했습니다/);
 });
 
 test('featured project links name their own destinations', () => {
@@ -85,5 +104,5 @@ test('CreditPulse and Voiceguard link to their services as well as demo videos',
   }
  }
  const voiceguard=portfolio.projects.find(item=>item.id==='voiceguard');
- assert.equal(voiceguard.showcaseLabel,'ONNX 실험과 PyTorch 복귀');
+ assert.equal(voiceguard.showcaseLabel,'비동기 분석 작업 코드');
 });

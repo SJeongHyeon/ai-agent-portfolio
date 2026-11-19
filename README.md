@@ -8,8 +8,8 @@
 
 | 프로젝트 | 개인 기여 | 공개 근거 |
 | --- | --- | --- |
-| CreditPulse | 초기 그래프 라우팅·단일 에이전트·승인 재개, 평가 지표·인용 검증, 심사 API·화면, 미채택 검색 실험 | [서비스](https://creditpulse-api-236552047198.asia-northeast3.run.app/) · [공개용 코드·평가 기록](https://github.com/SJeongHyeon/credit-pulse) · [시연 영상](https://github.com/SJeongHyeon/credit-pulse/blob/main/docs/demo/creditpulse_demo.mp4) |
-| 말해봄 Mk.2 | 모델·프롬프트 평가, Langfuse 관측, E2E·CI, UI 개선 | [공개용 코드·평가 기록](https://github.com/SJeongHyeon/malhaebom-mk2) |
+| CreditPulse | 초기 그래프 라우팅·단일 에이전트·승인 재개, 평가 지표·인용 검증, 인젝션 방어, 심사 API·화면 | [서비스](https://creditpulse-api-236552047198.asia-northeast3.run.app/) · [공개용 코드·평가 기록](https://github.com/SJeongHyeon/credit-pulse) · [시연 영상](https://github.com/SJeongHyeon/credit-pulse/blob/main/docs/demo/creditpulse_demo.mp4) |
+| 말해봄 Mk.2 | Prompt 후보의 품질 회귀 확인·교체 보류, Langfuse 관측, E2E·CI | [공개용 코드·평가 기록](https://github.com/SJeongHyeon/malhaebom-mk2) |
 | 보이스가드 | FastAPI API, 비동기 분석 작업 관리, Railway 배포 | [서비스 화면](https://voice-guard-project.netlify.app/) · [공개용 코드](https://github.com/SJeongHyeon/voiceguard) · [시연 영상](https://github.com/SJeongHyeon/voiceguard/blob/main/docs/demo/voiceguard_demo.mp4) (분석 백엔드 중지) |
 
 CreditPulse의 정답 근거 인용 23/25는 팀의 동결 평가셋 v2 관련 25문항을 2026-11-12 한 번 실행한 값입니다. 같은 평가셋으로 구성을 골랐고, 독립 질문에서 일반화 성능을 잰 기록은 없습니다. 그래프 검색은 동결 v2에서 한 문항 회귀와 검색 p95 증가로, 목차 어휘 번역은 일상어 23문항 1회에서 Hit@10 20/23 → 22/23이었지만 검색 p50 지연 한도 초과로 기본 경로에 적용하지 않았습니다. 목차 어휘 번역은 동결 v2를 측정하지 않았습니다. 팀 결과와 개인 기여는 각 공개 사본의 CONTRIBUTIONS.md에서 구분합니다.
