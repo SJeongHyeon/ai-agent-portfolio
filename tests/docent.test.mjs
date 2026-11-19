@@ -92,7 +92,6 @@ test("prepared answers and links contain no executable markup", () => {
   assert.equal(
     result.links.every(({ url }) =>
       url.startsWith("https://github.com/SJeongHyeon/") ||
-      url === "https://github.com/aihuman-7th/proj1-e" ||
       url === "https://nanocode00.github.io/malhaebom-showcase/",
     ),
     true,
@@ -105,10 +104,18 @@ test('specific project questions outrank generic project words',()=>{
  }
 });
 
-test('project overview links lead to the two featured projects', () => {
+test('project overview links lead to the three featured projects', () => {
  const result=selectDocentResponse('프로젝트를 보여주세요');
  assert.deepEqual(result.links.map(link=>link.url),[
-  'https://nanocode00.github.io/malhaebom-showcase/',
-  'https://github.com/aihuman-7th/proj1-e',
+  'https://github.com/SJeongHyeon/credit-pulse',
+  'https://github.com/SJeongHyeon/malhaebom-mk2',
+  'https://github.com/SJeongHyeon/voiceguard',
  ]);
+});
+
+test("CreditPulse questions route to its own verified answer", () => {
+ const result = selectDocentResponse("크레딧 펄스에서 맡은 역할은 무엇인가요?");
+ assert.equal(result.topic, "creditpulse");
+ assert.match(result.answer, /LangGraph/);
+ assert.ok(result.links.some(link=>link.url.includes("SJeongHyeon/credit-pulse")));
 });

@@ -140,6 +140,7 @@ export function initDocent(root = document) {
   const setOpen = (open) => {
     panel.hidden = !open;
     launcher.setAttribute("aria-expanded", String(open));
+    launcher.setAttribute("aria-label", open ? "포트폴리오 안내 닫기" : "포트폴리오 안내 열기");
 
     if (open) {
       input.focus();

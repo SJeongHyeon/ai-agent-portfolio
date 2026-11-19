@@ -1,7 +1,7 @@
 import { initDocent } from './docent.js';
 import { profile, projects, renderProjectCard, renderProjectDetail } from './portfolio.js';
 
-for (const [id, value] of [['profile-positioning',profile.positioning],['profile-statement',profile.statement],['profile-vision',profile.vision],['current-year',new Date().getFullYear()]]) {
+for (const [id, value] of [['profile-positioning',profile.positioning],['profile-statement',profile.statement],['current-year',new Date().getFullYear()]]) {
   const element=document.getElementById(id);
   if(element) element.textContent=value;
 }

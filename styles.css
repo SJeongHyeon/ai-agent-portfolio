@@ -94,21 +94,19 @@ ul {
 .brand {
   font-weight:850;
   letter-spacing:-.06em;
-  font-size:30px;
+  font-size:23px;
   display:flex;
-  align-items:center
+  align-items:center;
+  white-space:nowrap
 }
 
-.brand-dot {
-  margin-right:17px
-}
-
-.brand-name {
+.brand-korean {
+  margin-left:14px;
+  padding-left:14px;
+  border-left:1px solid #ccc;
   font-size:13px;
   font-weight:500;
-  letter-spacing:-.02em;
-  border-left:1px solid #ccc;
-  padding-left:17px
+  letter-spacing:-.02em
 }
 
 .site-header nav {
@@ -157,7 +155,7 @@ ul {
   grid-template-columns:1.6fr 1fr;
   gap:80px;
   align-items:center;
-  padding:66px 0 64px
+  padding:44px 0 38px
 }
 
 .role-label {
@@ -236,7 +234,7 @@ ul {
   display:flex;
   align-items:start;
   gap:20px;
-  padding:22px 0;
+  padding:16px 0;
   border-bottom:1px solid var(--line)
 }
 
@@ -266,7 +264,7 @@ ul {
 }
 
 .hero-index .index-note {
-  margin-top:28px;
+  margin-top:16px;
   font-size:13px;
   color:#666
 }
@@ -291,7 +289,7 @@ ul {
 }
 
 .section {
-  padding:86px 0;
+  padding:70px 0;
   border-bottom:1px solid var(--line)
 }
 
@@ -390,7 +388,7 @@ ul {
 }
 
 .visual-caption {
-  font-size:11px;
+  font-size:12px;
   color:#666
 }
 
@@ -405,7 +403,7 @@ ul {
 }
 
 .status {
-  font-size:9px;
+  font-size:11px;
   letter-spacing:.08em;
   text-transform:uppercase;
   border:1px solid #ccc;
@@ -439,7 +437,7 @@ ul {
 
 .project-role span {
   display:block;
-  font-size:9px;
+  font-size:11px;
   letter-spacing:.1em;
   color:#666;
   font-weight:400;
@@ -456,7 +454,7 @@ ul {
 }
 
 .tag-list li {
-  font-size:10px;
+  font-size:11px;
   padding:3px 8px;
   background:#f5f5f5;
   color:#666
@@ -943,9 +941,14 @@ footer a {
     height:76px
   }
   .brand {
-    font-size:26px
+    font-size:clamp(16px,4.3vw,19px)
   }
-  .brand-name {
+  .brand-korean {
+    margin-left:9px;
+    padding-left:9px;
+    font-size:11px
+  }
+  .site-header nav a:nth-child(2) {
     display:none
   }
   .site-header nav {
@@ -1140,3 +1143,151 @@ footer a {
   }
 }
 
+
+/* Project and technology overview */
+@media(min-width:1101px) {
+  .project-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+.project-grid .project-visual { height:190px; background:#eef0f2; }
+.project-grid .project-card__body { padding:27px; }
+.section--technology {
+  border-top:1px solid var(--line);
+}
+.technology-map {
+  border-top:2px solid var(--ink);
+}
+.technology-map article {
+  display:grid;
+  grid-template-columns:minmax(230px,.85fr) minmax(250px,1.35fr) minmax(220px,1fr);
+  align-items:start;
+  gap:32px;
+  padding:28px 0;
+  border-bottom:1px solid var(--line);
+}
+.technology-map h3 {
+  font-size:20px;
+  margin-bottom:7px;
+}
+.technology-map article p {
+  font-size:13px;
+  line-height:1.8;
+}
+.technology-map article > div:first-child p {
+  color:var(--muted);
+}
+.technology-map a {
+  font-size:12px;
+  font-weight:650;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+.technology-links {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+@media(max-width:900px) {
+  .technology-map article {
+    grid-template-columns:1fr 1fr;
+    gap:12px 26px;
+  }
+  .technology-map article > a,
+  .technology-map .technology-links {
+    grid-column:2;
+  }
+}
+@media(max-width:700px) {
+  .technology-map article {
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:23px 0;
+  }
+  .technology-map article > a,
+  .technology-map .technology-links {
+    grid-column:auto;
+  }
+}
+
+.card-result {
+  border-top:1px solid var(--line);
+  margin-top:16px;
+  padding:16px 0 0;
+}
+.card-result strong {
+  display:block;
+  font-size:13px;
+  line-height:1.6;
+}
+.card-result p {
+  font-size:12px;
+  margin:4px 0 8px;
+  color:var(--muted);
+}
+.card-result .text-link {
+  display:inline-block;
+}
+.docent-mobile-label {
+  display:none;
+}
+@media(max-width:700px) {
+  .site-header nav a {
+    display:inline-flex;
+    align-items:center;
+    min-height:36px;
+    font-size:12px;
+  }
+  .hero-layout {
+    padding:30px 0 22px;
+  }
+  .hero-actions {
+    flex-wrap:wrap;
+    gap:15px 20px;
+  }
+  .docent-launcher {
+    width:56px;
+    height:56px;
+    right:12px;
+    bottom:12px;
+    padding:0;
+    justify-content:center;
+    border-radius:50%;
+  }
+  .docent-launcher__signal,
+  .docent-launcher > span:nth-child(2) {
+    display:none;
+  }
+  .docent-mobile-label {
+    display:block;
+    font-size:13px;
+    font-weight:700;
+  }
+}
+
+@media(max-width:700px) {
+  .card-resources .text-link,
+  .technology-map a,
+  .project-links .text-link {
+    display:inline-flex;
+    align-items:center;
+    min-height:32px;
+  }
+}
+
+/* Project links share the first-screen hierarchy. */
+.hero-index { border-top:2px solid var(--ink); margin-top:0; }
+.hero-index .index-heading { padding:14px 0 12px; }
+.hero-index > a { display:flex; align-items:center; gap:18px; padding:18px 0; border-bottom:1px solid var(--line); }
+.hero-index > a .index-number { padding:0; flex:none; }
+.hero-index > a strong { display:block; font-size:20px; }
+.hero-index > a small { display:block; margin-top:3px; color:#666; font-size:12px; }
+.hero-index > a .index-arrow { font-size:19px; }
+@media(max-width:700px) {
+  .hero-index { display:block; margin-top:36px; }
+  .hero-index > a { padding:13px 0; }
+  .hero-index > a strong { font-size:17px; }
+  .hero-index > a small { font-size:11px; }
+}
+
+@media(max-width:350px) {
+  .site-header nav a:nth-child(3) { display:none; }
+}

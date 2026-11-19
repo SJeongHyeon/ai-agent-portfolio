@@ -10,6 +10,7 @@ const topic = ({ id, keywords, answer, links = [] }) =>
   });
 
 const suggestedQuestions = Object.freeze([
+  "CreditPulse에서 맡은 역할은 무엇인가요?",
   "말해봄에서 맡은 역할은 무엇인가요?",
   "현재 확인할 수 있는 프로젝트는 무엇인가요?",
   "Langfuse에서 무엇을 검증했나요?",
@@ -19,21 +20,23 @@ const suggestedQuestions = Object.freeze([
 const topics = Object.freeze([
   topic({id:'presentation', keywords:['ppt','발표','슬라이드'], answer:'말해봄 Mk.2의 프로젝트 발표용 PPT를 제작했습니다. 발표는 담당하지 않았습니다.'}),
   topic({id:'observability', keywords:['langfuse','트레이스','관측','토큰'], answer:'말해봄 Mk.2에서 Langfuse의 트레이스와 입출력, 토큰 사용량·비용·지연 시간을 확인하고 오류를 추적했습니다. 프롬프트 버전별 비교 실험과 구분되는 관측 검증 작업입니다.'}),
-  topic({id:'malhaebom', keywords:['말해봄','면접','프롬프트','사람 평가'], answer:'말해봄 Mk.2에서 사람 평가 기준 수립·재검증, 모델 탐색과 프롬프트 버전별 성능·비용·응답 시간 비교를 수행했습니다. Langfuse 검증, 로그인·공고 분석·면접 코칭 E2E 테스트, pytest CI, 코칭 시작 화면·테마 개선과 PPT 제작도 담당했습니다. 코드 저장소는 비공개이며 공개 소개 페이지를 확인할 수 있습니다.', links:[{label:'말해봄 팀 프로젝트 소개',url:'https://nanocode00.github.io/malhaebom-showcase/'}]}),
-  topic({id:'voiceguard', keywords:['보이스가드','보이스피싱','fastapi','railway'], answer:'보이스가드는 통화 녹음을 전사·분류하는 음성 분석 팀 프로젝트입니다. 저는 FastAPI 백엔드 API, 비동기 분석 작업 관리와 Railway 배포를 담당했습니다. 팀의 분류 모델 학습과 성능은 개인 기여와 구분합니다.',links:[{label:'보이스가드 GitHub',url:'https://github.com/aihuman-7th/proj1-e'}]}),
+  topic({id:'creditpulse', keywords:['creditpulse','credit pulse','크레딧펄스','크레딧 펄스'], answer:'CreditPulse에서 LangGraph 초기 라우팅·단일 에이전트·승인 재개, 평가 지표 계산기, 인용 검증, 심사 API·화면을 맡았습니다. 최종 Supervisor 구조는 팀의 작업입니다. 팀의 동결 평가셋 v2 관련 25문항 1회 실행에서 정답 근거 인용은 23/25였지만, 같은 평가셋으로 구성을 골랐고 독립 질문 일반화는 검증하지 않았습니다. 그래프 검색은 동결 평가 회귀와 지연 증가, 목차 어휘 번역은 지연 한도 초과로 기본 꺼짐이며 후자는 동결 v2를 재측정하지 않았습니다.', links:[{label:'CreditPulse 공개 코드·평가 기록',url:'https://github.com/SJeongHyeon/credit-pulse'}]}),
+  topic({id:'malhaebom', keywords:['말해봄','면접','프롬프트','사람 평가'], answer:'말해봄 Mk.2에서 사람 평가 기준 수립·재검증, 모델 탐색과 프롬프트 버전별 성능·비용·응답 시간 비교를 수행했습니다. Langfuse 검증, 로그인·공고 분석·면접 코칭 E2E 테스트, pytest CI, 코칭 시작 화면·테마 개선과 PPT 제작도 담당했습니다. 공개용 사본에서 코드와 평가 기록을 확인할 수 있습니다.', links:[{label:'말해봄 공개용 코드',url:'https://github.com/SJeongHyeon/malhaebom-mk2'}]}),
+  topic({id:'voiceguard', keywords:['보이스가드','보이스피싱','fastapi','railway'], answer:'보이스가드는 통화 녹음을 전사·분류하는 음성 분석 팀 프로젝트입니다. 저는 FastAPI 백엔드 API, 비동기 분석 작업 관리와 Railway 배포를 담당했습니다. 현재 운영 백엔드는 내려가 있어 시연 영상으로 동작을 확인할 수 있습니다. 팀의 분류 모델 학습과 성능은 개인 기여와 구분합니다.',links:[{label:'보이스가드 GitHub',url:'https://github.com/SJeongHyeon/voiceguard'}]}),
   topic({
     id: "projects",
     keywords: ["프로젝트", "만든 것", "코드", "깃허브", "github"],
     answer:
-      "대표 프로젝트는 말해봄 Mk.2와 보이스가드입니다. 말해봄에서는 LLM 평가와 관측·E2E 검증을, 보이스가드에서는 FastAPI 백엔드와 비동기 작업 관리·배포를 맡았습니다. 말해봄 코드는 비공개입니다. 기존 EDA·딥러닝·음악 장르 예측 실습도 학습 프로젝트로 소개합니다.",
+      "대표 프로젝트는 CreditPulse, 말해봄 Mk.2, 보이스가드입니다. CreditPulse에서는 LangGraph 에이전트와 평가·인용 검증을, 말해봄에서는 LLM 평가와 관측·E2E 검증을, 보이스가드에서는 FastAPI 백엔드와 비동기 작업 관리·배포를 맡았습니다. 세 프로젝트의 공개용 코드와 근거 기록을 볼 수 있습니다. 기존 EDA·딥러닝·음악 장르 예측 실습도 학습 프로젝트로 소개합니다.",
     links: [
+      { label: "CreditPulse 공개 코드·평가 기록", url: "https://github.com/SJeongHyeon/credit-pulse" },
       {
-        label: "말해봄 팀 프로젝트 소개",
-        url: "https://nanocode00.github.io/malhaebom-showcase/",
+        label: "말해봄 공개용 코드",
+        url: "https://github.com/SJeongHyeon/malhaebom-mk2",
       },
       {
         label: "보이스가드 GitHub",
-        url: "https://github.com/aihuman-7th/proj1-e",
+        url: "https://github.com/SJeongHyeon/voiceguard",
       },
     ],
   }),
@@ -41,13 +44,13 @@ const topics = Object.freeze([
     id: "failure",
     keywords: ["실패", "한계", "부족", "개선"],
     answer:
-      "실패를 감추기보다 어떤 조건에서 기대와 달랐는지 기록하고 다음 검증 항목으로 바꾸는 것을 중요하게 생각합니다. 평가 버전과 실행 조건을 구분하며, 개별 성공 사례를 전체 서비스 품질로 일반화하지 않습니다. 보이스가드의 정상 통화 오탐과 말해봄의 버전별 평가 범위를 한계로 함께 설명합니다.",
+      "실패를 감추기보다 어떤 조건에서 기대와 달랐는지 기록하고 다음 검증 항목으로 바꾸는 것을 중요하게 생각합니다. 평가 버전과 실행 조건을 구분하며, 개별 성공 사례를 전체 서비스 품질로 일반화하지 않습니다. CreditPulse의 미채택 검색 실험, 보이스가드의 정상 통화 오탐, 말해봄의 버전별 평가 범위를 한계로 함께 설명합니다.",
   }),
   topic({
     id: "learning",
     keywords: ["학습", "공부", "기술", "집중", "배우"],
     answer:
-      "두 팀 프로젝트에서 얻은 백엔드·LLM 평가·관측 경험을 바탕으로 신뢰할 수 있는 Agent loop와 음성·멀티모달 인터페이스를 계속 학습하고 있습니다.",
+      "세 팀 프로젝트에서 얻은 에이전트·검색·평가·백엔드 경험을 바탕으로 신뢰할 수 있는 Agent loop와 음성·멀티모달 인터페이스를 계속 학습하고 있습니다.",
   }),
   topic({
     id: "vision",
