@@ -71,8 +71,7 @@ test('CreditPulse explains injection defenses and their measured limits', () => 
  const detail=portfolio.renderProjectDetail(credit);
  assert.match(detail,/질문·저장 규칙·응답/);
  assert.match(detail,/프롬프트 인젝션/);
- assert.match(detail,/실제 모델 레드팀/);
- assert.match(detail,/미차단 유형/);
+ assert.match(detail,/프롬프트 인젝션 방어 3겹\(질문·규칙·응답\)을 구현해 키 없는 오프라인 시험으로 검증했습니다\. 실제 모델 레드팀 재측정\(51건\)은 팀 작업이며, 저는 그중 일부에 참여했습니다\./);
  assert.doesNotMatch(detail,/참고 뉴스를 선별/);
 });
 

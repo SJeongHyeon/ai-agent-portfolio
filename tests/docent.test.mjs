@@ -117,5 +117,6 @@ test("CreditPulse questions route to its own verified answer", () => {
  const result = selectDocentResponse("크레딧 펄스에서 맡은 역할은 무엇인가요?");
  assert.equal(result.topic, "creditpulse");
  assert.match(result.answer, /LangGraph/);
+ assert.match(result.answer, /실제 모델 레드팀 재측정은 팀 작업/);
  assert.ok(result.links.some(link=>link.url.includes("SJeongHyeon/credit-pulse")));
 });
